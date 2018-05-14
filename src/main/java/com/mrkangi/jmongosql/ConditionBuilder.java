@@ -4,54 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
-import com.sun.xml.internal.ws.util.StringUtils;
-import lombok.experimental.var;
+import com.mrkangi.jmongosql.util.IntegerParser;
+import com.mrkangi.jmongosql.util.JSONExtension;
+import com.mrkangi.jmongosql.util.Utils;
 
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.function.BiConsumer;
-
-class JSONExtension
-{
-    public static void foreach(Object json, BiConsumer<String,Object> action){
-        if(json instanceof JSONObject){
-            JSONObject jobj = (JSONObject)json;
-            for(String key : jobj.keySet()){
-                action.accept(key,jobj.get(key));
-            }
-        }else if(json instanceof JSONArray){
-            JSONArray jarr = (JSONArray)json;
-            for(int i = 0;i<jarr.size();i++){
-                action.accept(Integer.toString(i),jarr.get(i));
-            }
-        }
-    }
-}
-
-class IntegerParser{
-    private String value;
-    private Integer parsedValue;
-
-    public IntegerParser(String value) {
-        this.value = value;
-        this.parsedValue = null;
-    }
-
-    public boolean canParse(){
-        try{
-            this.parsedValue = Integer.parseInt(value);
-            return true;
-        }catch (NumberFormatException ex){
-            return false;
-        }
-    }
-
-    public Integer getParsedValue() {
-        return parsedValue;
-    }
-}
 
 public class ConditionBuilder {
     String where;

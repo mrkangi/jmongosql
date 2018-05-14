@@ -1,6 +1,7 @@
-package com.mrkangi.jmongosql;
+package com.mrkangi.jmongosql.util;
 
 import com.mrkangi.jmongosql.primitives.TriFunction;
+import com.mrkangi.jmongosql.util.Regs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,11 +11,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-class Regs
-{
-    public static final Pattern DereferenceOperators = Pattern.compile("[-#=]+>+");
-    public static final Pattern EndsInCast = Pattern.compile("::\\w+$");
-}
+
 public class Utils {
     private <TIn,TOut> List<TOut> map(List<TIn> list,BiFunction function){
         List<TOut> result = new ArrayList<>();
