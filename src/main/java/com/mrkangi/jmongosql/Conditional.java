@@ -134,7 +134,7 @@ public class Conditional {
                 return column + " in (" + String.join(", ", JSONArraySelect(_set, (val, i) ->
                 {
                     values.add(val);
-                    return String.format("$%d", i + 1);
+                    return String.format("$%d", values.size());
                 })) + ")";
             }
 
@@ -164,7 +164,7 @@ public class Conditional {
                 return column + " not in (" + String.join(", ", JSONArraySelect(_set, (val, i) ->
                 {
                     values.add(val);
-                    return String.format("$%d", i + 1);
+                    return String.format("$%d", values.size());
                 })) + ")";
             }
             throw new RuntimeException("不支持的类型");
